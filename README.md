@@ -1,39 +1,36 @@
-# infonix
-Plataforma de presupuestos técnicos interactivos para soluciones de ingeniería
+# INFONIX Repository
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+INFONIX es una plataforma de presupuestación interactiva orientada a la ingeniería de software; el sistema se estructura bajo una arquitectura modular en Next.js, priorizando así el desacoplamiento de componentes y la estandarización del flujo de trabajo en el ciclo de vida de desarrollo.
 
-## Getting Started
+## Arquitectura y estructura
 
-First, run the development server:
+El proyecto se adhiere a un patrón de composición de componentes dentro del directorio `src/`. La separación de responsabilidades se define de la siguiente manera:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* `/app`: Capa de enrutamiento y definición de layouts
+* `/components`: Bloques funcionales divididos por dominio (dashboard, marketing, ui)
+* `/lib`: Lógica compartida, utilidades y configuración de rutas
+* `/fonts`: Gestión de tipografía local para optimización de rendimiento (evitando dependencias externas)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Flujo de trabajo (Git Workflow)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para mantener la integridad del repositorio y el desarrollo paralelo, se ha implementado una estrategia de ramas basada en Git Flow:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* `main`: Rama de despliegue productivo. Solo recibe fusiones validadas mediante Pull Requests
+* `develop`: Rama de integración para el desarrollo activo
+* `feature/*`: Ramas temporales destinadas a la implementación de funcionalidades específicas
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Configuración del entorno
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Requisitos técnicos
+- Node.js v18.0.0 o superior
+- Gestor de paquetes npm o pnpm
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Instalación y ejecución (por ahora).
+1. Clonar el repositorio
+2. Instalar dependencias mediante `npm install`
+3. Iniciar el entorno de desarrollo con `npm run dev`
 
-## Deploy on Vercel
+## Normas de contribución
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Todo nuevo desarrollo debe ser aislado en una rama `feature/` y validado antes de ser integrado en `develop`, no se van a permitir cambios directos en `main` bajo ninguna circunstancia, la consistencia del código debe mantenerse mediante el uso estricto del archivo `.gitignore` configurado para excluir dependencias y archivos de compilación temporales
